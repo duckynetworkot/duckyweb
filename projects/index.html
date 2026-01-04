@@ -3,227 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Duck Dev</title>
-
+  <title>Partners | Duck Dev</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --yellow: #FFD84D;
-      --orange: #FF9F1C;
-      --orange-dark: #FF7A00;
-      --bg-dark: #0b0f14;
-      --glass: rgba(20, 24, 32, 0.7);
+      --yellow:#FFD84D;--orange:#FF9F1C;--blurple:#5865F2;--bg:#0b0f14;--glass:rgba(20,24,32,.72)
     }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,sans-serif;background:radial-gradient(1000px 500px at 50% 0%,rgba(255,216,77,.15),transparent 60%),var(--bg);color:#fff;min-height:100vh;padding:120px 20px 40px}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* NAVBAR (shared on all pages) */
+    .navbar{position:fixed;top:20px;left:50%;transform:translateX(-50%);width:calc(100% - 80px);max-width:1200px;padding:14px 20px;background:linear-gradient(135deg,rgba(255,216,77,.15),rgba(255,159,28,.15));backdrop-filter:blur(14px);border-radius:999px;display:flex;justify-content:space-between;align-items:center;z-index:100;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+    .nav-left{display:flex;align-items:center;gap:18px;font-weight:800}
+    .duck{font-size:20px;cursor:pointer;transition:transform .25s ease}
+    .duck:hover{transform:rotate(-10deg) scale(1.1)}
+    .nav-links{display:flex;gap:18px}
+    .nav-links a{color:#fff;text-decoration:none;font-weight:600;opacity:.85}
+    .nav-links a:hover{opacity:1}
+    .discord-btn{background:var(--blurple);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(88,101,242,.45)}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(1000px 500px at 50% 0%, rgba(255,216,77,0.15), transparent 60%), var(--bg-dark);
-      color: white;
-      min-height: 100vh;
-      padding: 120px 20px 40px;
-    }
+    h1{text-align:center;font-size:clamp(36px,5vw,56px);margin-bottom:12px}
+    .gradient{background:linear-gradient(90deg,var(--yellow),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .subtitle{text-align:center;opacity:.85;margin-bottom:50px}
 
-    h1 {
-      text-align: center;
-      font-size: clamp(36px, 5vw, 56px);
-      margin-bottom: 12px;
-    }
+    .partners-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px}
 
-    .gradient {
-      background: linear-gradient(90deg, var(--yellow), var(--orange));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .partner-card{background:var(--glass);border-radius:22px;overflow:hidden;backdrop-filter:blur(14px);box-shadow:0 24px 50px rgba(0,0,0,.5);transform:translateY(0);transition:transform .35s ease,box-shadow .35s ease}
+    .partner-card:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(0,0,0,.65)}
 
-    .subtitle {
-      text-align: center;
-      opacity: 0.85;
-      margin-bottom: 50px;
-    }
+    .partner-banner{height:150px;background-size:cover;background-position:center}
+    .partner-body{padding:18px 18px 52px;position:relative;margin-top:-20px;background:linear-gradient(to bottom,rgba(20,24,32,0),var(--glass) 25%)}
 
-    .projects-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 26px;
-    }
+    .partner-title{font-size:20px;font-weight:800;margin-bottom:8px}
+    .partner-description{font-size:14px;line-height:1.6;max-height:72px;overflow:hidden;position:relative}
+    .partner-description::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:40px;background:linear-gradient(to bottom,rgba(20,24,32,0),rgba(20,24,32,.95));backdrop-filter:blur(3px)}
 
-    .project-card {
-      background: var(--glass);
-      border-radius: 20px;
-      overflow: hidden;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
+    .card-actions{position:absolute;bottom:12px;right:12px;display:flex;gap:10px}
+    .btn{padding:8px 14px;border-radius:12px;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer}
+    .btn.info{background:linear-gradient(135deg,var(--yellow),var(--orange));color:#000}
+    .btn.discord{background:var(--blurple);color:#fff}
 
-    .project-banner {
-      height: 140px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .project-body {
-      padding: 18px 18px 50px;
-      position: relative;
-    }
-
-    .project-title {
-      font-weight: 800;
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .project-description {
-      font-size: 14px;
-      line-height: 1.6;
-      max-height: 72px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Fade + blur */
-    .project-description::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(20,24,32,0), rgba(20,24,32,0.95));
-      backdrop-filter: blur(2px);
-    }
-
-    .card-actions {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn {
-      padding: 8px 12px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .btn.info {
-      background: linear-gradient(135deg, var(--yellow), var(--orange));
-      color: #000;
-    }
-
-    .btn.download {
-      background: rgba(255,255,255,0.15);
-      color: white;
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    .modal-content {
-      max-width: 600px;
-      background: var(--glass);
-      border-radius: 20px;
-      padding: 26px;
-      backdrop-filter: blur(16px);
-    }
-
-    .modal h2 { margin-bottom: 12px; }
-    .modal p { line-height: 1.7; opacity: 0.95; }
-
-    .close {
-      margin-top: 20px;
-      display: inline-block;
-      cursor: pointer;
-      font-weight: 700;
-      color: var(--yellow);
-    }
+    /* MODAL */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:1000}
+    .modal-content{max-width:650px;width:100%;background:var(--glass);border-radius:24px;overflow:hidden;animation:pop .35s ease}
+    @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+    .modal-banner{height:180px;background-size:cover;background-position:center}
+    .modal-body{padding:22px}
+    .close{display:inline-block;margin-top:20px;font-weight:700;color:var(--yellow);cursor:pointer}
   </style>
 </head>
 <body>
 
-  <h1>My <span class="gradient">Projects</span></h1>
-  <p class="subtitle">Minecraft plugins, event systems, tools, and custom solutions.</p>
+<nav class="navbar">
+  <div class="nav-left">
+    <span class="duck" onclick="location.href='/'">🦆</span>
+    <div class="nav-links">
+      <a href="/projects/">Projects</a>
+      <a href="/partners/">Partners</a>
+    </div>
+  </div>
+  <a class="discord-btn" href="https://discord.gg/QtBNmgrQhD" target="_blank">Discord</a>
+</nav>
 
-  <div class="projects-grid" id="projects"></div>
+<h1>Our <span class="gradient">Partners</span></h1>
+<p class="subtitle">Communities and servers we proudly collaborate with.</p>
+<div class="partners-grid" id="partners"></div>
 
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="modal-banner" id="modalBanner"></div>
+    <div class="modal-body">
       <h2 id="modalTitle"></h2>
       <p id="modalDescription"></p>
       <span class="close" onclick="closeModal()">Close</span>
     </div>
   </div>
+</div>
 
-  <script>
-    fetch('projects.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('projects');
-
-        data.forEach(p => {
-          const card = document.createElement('div');
-          card.className = 'project-card';
-
-          card.innerHTML = `
-            <div class="project-banner" style="background-image:url('${p.banner}')"></div>
-            <div class="project-body">
-              <div class="project-title">${p.name}</div>
-              <div class="project-description">${p.description}</div>
-
-              <div class="card-actions">
-                <span class="btn info" onclick='openModal(${JSON.stringify(p).replace(/'/g, "&apos;")})'>View Info</span>
-                <a class="btn download" href="${p.download}" target="_blank">Download</a>
-              </div>
-            </div>
-          `;
-
-          container.appendChild(card);
-        });
-      });
-
-    function openModal(project) {
-      document.getElementById('modalTitle').textContent = project.name;
-      document.getElementById('modalDescription').textContent = project.description;
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-  </script>
-
+<script>
+fetch('partners.json').then(r=>r.json()).then(data=>{
+  const c=document.getElementById('partners')
+  data.forEach(p=>{
+    const card=document.createElement('div')
+    card.className='partner-card'
+    card.innerHTML=`
+      <div class="partner-banner" style="background-image:url('${p.banner}')"></div>
+      <div class="partner-body">
+        <div class="partner-title">${p.name}</div>
+        <div class="partner-description">${p.description}</div>
+        <div class="card-actions">
+          <span class="btn info" onclick='openModal(${JSON.stringify(p)})'>View Info</span>
+          <a class="btn discord" href="${p.discord}" target="_blank">Discord</a>
+        </div>
+      </div>`
+    c.appendChild(card)
+  })
+})
+function openModal(p){
+  modal.style.display='flex'
+  modalBanner.style.backgroundImage=`url(${p.banner})`
+  modalTitle.textContent=p.name
+  modalDescription.textContent=p.description
+}
+function closeModal(){modal.style.display='none'}
+</script>
 </body>
 </html>
-
-<!--
-projects.json STRUCTURE:
-[
-  {
-    "name": "EventCore",
-    "banner": "https://cdn.discordapp.com/attachments/.../eventcore.png",
-    "description": "Full description of the project...",
-    "download": "https://example.com/download"
-  }
-]
--->
