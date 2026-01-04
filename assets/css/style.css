@@ -115,10 +115,23 @@ body{
   box-shadow:0 30px 70px rgba(0,0,0,.65);
 }
 
-.card-banner{
-  height:150px;
-  background-size:cover;
-  background-position:center;
+.card-banner {
+  height: 140px;
+  background-size: cover;              /* crop */
+  background-position: center;
+  position: relative;
+}
+
+/* soft blend into card */
+.card-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20,24,32,0) 55%,
+    rgba(20,24,32,.95) 100%
+  );
 }
 
 .card-body{
@@ -213,10 +226,12 @@ body{
   to{transform:scale(1);opacity:1}
 }
 
-.modal-banner{
-  height:180px;
-  background-size:cover;
-  background-position:center;
+.modal-banner {
+  height: 260px;
+  background-size: contain;     /* ← key difference */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0b0f14;
 }
 
 .modal-body{
