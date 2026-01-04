@@ -1,231 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Partners | Duck Dev</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --yellow: #FFD84D;
-      --orange: #FF9F1C;
-      --orange-dark: #FF7A00;
-      --blurple: #5865F2;
-      --bg-dark: #0b0f14;
-      --glass: rgba(20, 24, 32, 0.7);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(1000px 500px at 50% 0%, rgba(255,216,77,0.15), transparent 60%), var(--bg-dark);
-      color: white;
-      min-height: 100vh;
-      padding: 120px 20px 40px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: clamp(36px, 5vw, 56px);
-      margin-bottom: 12px;
-    }
-
-    .gradient {
-      background: linear-gradient(90deg, var(--yellow), var(--orange));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle {
-      text-align: center;
-      opacity: 0.85;
-      margin-bottom: 50px;
-    }
-
-    .partners-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 26px;
-    }
-
-    .partner-card {
-      background: var(--glass);
-      border-radius: 20px;
-      overflow: hidden;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .partner-banner {
-      height: 140px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .partner-body {
-      padding: 18px 18px 50px;
-      position: relative;
-    }
-
-    .partner-title {
-      font-weight: 800;
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .partner-description {
-      font-size: 14px;
-      line-height: 1.6;
-      max-height: 72px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Fade + blur effect */
-    .partner-description::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(20,24,32,0), rgba(20,24,32,0.95));
-      backdrop-filter: blur(2px);
-    }
-
-    .card-actions {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn {
-      padding: 8px 12px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .btn.info {
-      background: linear-gradient(135deg, var(--yellow), var(--orange));
-      color: #000;
-    }
-
-    .btn.discord {
-      background: var(--blurple);
-      color: white;
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    .modal-content {
-      max-width: 600px;
-      background: var(--glass);
-      border-radius: 20px;
-      padding: 26px;
-      backdrop-filter: blur(16px);
-    }
-
-    .modal h2 { margin-bottom: 12px; }
-
-    .modal p { line-height: 1.7; opacity: 0.95; }
-
-    .close {
-      margin-top: 20px;
-      display: inline-block;
-      cursor: pointer;
-      font-weight: 700;
-      color: var(--yellow);
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Partners</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
-  <h1>Our <span class="gradient">Partners</span></h1>
-  <p class="subtitle">Trusted Minecraft servers and communities we proudly work with.</p>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-left">
+    <div class="duck" onclick="location.href='/'">🦆</div>
+    <div class="nav-links">
+      <a href="/projects/">Projects</a>
+      <a href="/partners/">Partners</a>
+    </div>
+  </div>
+  <a class="discord-btn" href="https://discord.gg/QtBNmgrQhD" target="_blank">Discord</a>
+</div>
 
-  <div class="partners-grid" id="partners"></div>
+<section class="hero" style="min-height:auto;padding-top:160px">
+  <h1 class="gradient">Partner Servers</h1>
+  <p class="subtitle">Servers I work with & recommend</p>
 
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
+  <div class="grid" id="partnerGrid"></div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="modal-banner" id="modalBanner"></div>
+    <div class="modal-body">
       <h2 id="modalTitle"></h2>
       <p id="modalDescription"></p>
       <span class="close" onclick="closeModal()">Close</span>
     </div>
   </div>
+</div>
 
-  <script>
-    fetch('partners.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('partners');
+<script>
+fetch('partners.json')
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById('partnerGrid');
 
-        data.forEach(p => {
-          const card = document.createElement('div');
-          card.className = 'partner-card';
+    data.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
 
-          card.innerHTML = `
-            <div class="partner-banner" style="background-image:url('${p.banner}')"></div>
-            <div class="partner-body">
-              <div class="partner-title">${p.name}</div>
-              <div class="partner-description">${p.description}</div>
+      card.innerHTML = `
+        <div class="card-banner" style="background-image:url('${p.banner}')"></div>
+        <div class="card-body">
+          <div class="card-title">${p.name}</div>
+          <div class="card-description">${p.description}</div>
+          <div class="card-actions">
+            <div class="btn primary" onclick='openModal(${JSON.stringify(p)})'>View Info</div>
+            <a class="btn discord" href="${p.discord}" target="_blank">Discord</a>
+          </div>
+        </div>
+      `;
 
-              <div class="card-actions">
-                <span class="btn info" onclick='openModal(${JSON.stringify(p).replace(/'/g, "&apos;")})'>View Info</span>
-                <a class="btn discord" href="${p.discord}" target="_blank">Discord</a>
-              </div>
-            </div>
-          `;
+      grid.appendChild(card);
+    });
+  });
 
-          container.appendChild(card);
-        });
-      });
+function openModal(p) {
+  document.getElementById('modal').style.display = 'flex';
+  document.getElementById('modalTitle').innerText = p.name;
+  document.getElementById('modalDescription').innerText = p.description;
+  document.getElementById('modalBanner').style.backgroundImage = `url('${p.banner}')`;
+}
 
-    function openModal(partner) {
-      document.getElementById('modalTitle').textContent = partner.name;
-      document.getElementById('modalDescription').textContent = partner.description;
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-  </script>
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+</script>
 
 </body>
 </html>
-
-<!--
-partners.json STRUCTURE:
-[
-  {
-    "name": "Quack SMP",
-    "banner": "https://cdn.discordapp.com/attachments/.../banner.png",
-    "description": "Long partner description goes here...",
-    "discord": "https://discord.gg/example"
-  }
-]
--->

@@ -1,77 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ducky</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --yellow:#FFD84D;--orange:#FF9F1C;--blurple:#5865F2;--bg:#0b0f14;--glass:rgba(20,24,32,.72)
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,sans-serif;background:radial-gradient(1200px 600px at 50% 20%,rgba(255,216,77,.15),transparent 60%),radial-gradient(800px 500px at 80% 60%,rgba(255,159,28,.15),transparent 60%),var(--bg);color:#fff;min-height:100vh;overflow-x:hidden}
-
-    /* NAVBAR */
-    .navbar{position:fixed;top:20px;left:50%;transform:translateX(-50%);width:calc(100% - 80px);max-width:1200px;padding:14px 20px;background:linear-gradient(135deg,rgba(255,216,77,.15),rgba(255,159,28,.15));backdrop-filter:blur(14px);border-radius:999px;display:flex;justify-content:space-between;align-items:center;z-index:100;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-    .nav-left{display:flex;align-items:center;gap:18px;font-weight:800}
-    .duck{font-size:20px;cursor:pointer;transition:transform .25s ease}
-    .duck:hover{transform:rotate(-10deg) scale(1.1)}
-    .nav-links{display:flex;gap:18px}
-    .nav-links a{color:#fff;text-decoration:none;font-weight:600;opacity:.85}
-    .nav-links a:hover{opacity:1}
-    .discord-btn{background:var(--blurple);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(88,101,242,.45)}
-
-    /* HERO */
-    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 40px}
-    .hero-inner{max-width:900px}
-    .hero h1{font-size:clamp(42px,6vw,76px);font-weight:800;margin-bottom:18px}
-    .gradient{background:linear-gradient(90deg,var(--yellow),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero p{font-size:18px;opacity:.9;max-width:720px;margin:0 auto 34px}
-
-    .cta-row{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
-    .cta{padding:14px 26px;border-radius:16px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s ease,box-shadow .2s ease}
-    .cta.primary{background:linear-gradient(135deg,var(--yellow),var(--orange));color:#000;box-shadow:0 14px 34px rgba(255,159,28,.45)}
-    .cta.secondary{background:rgba(255,255,255,.1);color:#fff;backdrop-filter:blur(10px)}
-    .cta:hover{transform:translateY(-3px)}
-
-    footer{text-align:center;padding:40px 20px;opacity:.6;font-size:14px}
-  </style>
+  <meta charset="UTF-8">
+  <title>Duck Dev Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
-<nav class="navbar">
+<!-- NAVBAR -->
+<div class="navbar">
   <div class="nav-left">
-    <span class="duck" onclick="location.href='/'">🦆</span>
+    <div class="duck" onclick="location.href='/'">🦆</div>
     <div class="nav-links">
       <a href="/projects/">Projects</a>
       <a href="/partners/">Partners</a>
     </div>
   </div>
   <a class="discord-btn" href="https://discord.gg/QtBNmgrQhD" target="_blank">Discord</a>
-</nav>
+</div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>
-      Minecraft Development,<br>
-      Done the <span class="gradient">Quackiest</span> Way
-    </h1>
+    <h1 class="gradient">Minecraft Developer Portfolio</h1>
     <p>
-      I build Minecraft plugins, event systems, and server tools with clean code,
-      strong UX, and production-ready performance.
+      Custom plugins, event systems, automation tools, and high-quality Minecraft development.
+      Built clean, scalable, and performance-focused.
     </p>
+
     <div class="cta-row">
-      <a href="/projects/" class="cta primary">View Projects</a>
-      <a href="/partners/" class="cta secondary">Our Partners</a>
+      <a class="cta primary" href="/projects/">View Projects</a>
+      <a class="cta secondary" href="/partners/">Partner Servers</a>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 Duck Dev · Minecraft Developer Portfolio
+  © 2026 Duck Dev — Built with 🦆 energy
 </footer>
 
 </body>
