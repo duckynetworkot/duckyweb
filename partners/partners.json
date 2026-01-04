@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Quack SMP",
+    "banner": "https://cdn.discordapp.com/attachments/123/456/banner.png",
+    "description": "Quack SMP is a competitive Minecraft server focused on events, custom plugins, and community-driven gameplay. We host weekly tournaments, seasonal content, and large-scale events.",
+    "discord": "https://discord.gg/example"
+  },
+  {
+    "name": "DuckCraft",
+    "banner": "https://cdn.discordapp.com/attachments/789/111/duckcraft.png",
+    "description": "DuckCraft is a survival-based network featuring custom mechanics, RPG elements, and unique progression systems.",
+    "discord": "https://discord.gg/example2"
+  }
+]

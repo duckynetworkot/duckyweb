@@ -1,0 +1,14 @@
+[
+  {
+    "name": "EventCore",
+    "banner": "https://cdn.discordapp.com/attachments/123/456/eventcore.png",
+    "description": "EventCore is a powerful Minecraft event framework used to run large-scale tournaments, team-based games, and automated match flows.",
+    "download": "https://example.com/eventcore"
+  },
+  {
+    "name": "AutoTeams",
+    "banner": "https://cdn.discordapp.com/attachments/789/111/autoteams.png",
+    "description": "AutoTeams handles team assignment, balancing, region control, and live event management for Minecraft servers.",
+    "download": "https://example.com/autoteams"
+  }
+]
