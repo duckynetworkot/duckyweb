@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Partners</title>
+  <title>Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -20,11 +20,10 @@
   <a class="discord-btn" href="https://discord.gg/QtBNmgrQhD" target="_blank">Discord</a>
 </div>
 
-<section class="hero" style="min-height:auto;padding-top:160px">
-  <h1 class="gradient">Partner Servers</h1>
-  <p class="subtitle">Servers I work with & recommend</p>
-
-  <div class="grid" id="partnerGrid"></div>
+<section class="hero">
+  <h1>Projects</h1>
+  <p>Public & private development work</p>
+  <div class="grid" id="projectGrid"></div>
 </section>
 
 <!-- MODAL -->
@@ -40,10 +39,10 @@
 </div>
 
 <script>
-fetch('partners.json')
+fetch('projects.json')
   .then(res => res.json())
   .then(data => {
-    const grid = document.getElementById('partnerGrid');
+    const grid = document.getElementById('projectGrid');
 
     data.forEach(p => {
       const card = document.createElement('div');
@@ -56,24 +55,28 @@ fetch('partners.json')
           <div class="card-description">${p.description}</div>
           <div class="card-actions">
             <div class="btn primary" onclick='openModal(${JSON.stringify(p)})'>View Info</div>
-            <a class="btn discord" href="${p.discord}" target="_blank">Discord</a>
+            <a class="btn download" href="${p.download}" target="_blank">Download</a>
           </div>
         </div>
       `;
-
       grid.appendChild(card);
     });
   });
 
 function openModal(p) {
-  document.getElementById('modal').style.display = 'flex';
+  const modal = document.getElementById('modal');
   document.getElementById('modalTitle').innerText = p.name;
   document.getElementById('modalDescription').innerText = p.description;
   document.getElementById('modalBanner').style.backgroundImage = `url('${p.banner}')`;
+
+  modal.style.display = 'flex';
+  setTimeout(() => modal.style.opacity = 1, 10);
 }
 
 function closeModal() {
-  document.getElementById('modal').style.display = 'none';
+  const modal = document.getElementById('modal');
+  modal.style.opacity = 0;
+  setTimeout(() => modal.style.display = 'none', 350);
 }
 </script>
 
