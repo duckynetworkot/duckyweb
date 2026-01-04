@@ -1,14 +1,14 @@
 [
   {
-    "name": "EventCore",
-    "banner": "https://cdn.discordapp.com/attachments/123/456/eventcore.png",
-    "description": "EventCore is a powerful Minecraft event framework used to run large-scale tournaments, team-based games, and automated match flows.",
-    "download": "https://example.com/eventcore"
+    "name": "QWERTZCore",
+    "banner": "https://cdn.modrinth.com/data/If2PJ9Fo/fe6176d7e77c10d7d11fac894af400fb2132751e_96.webp",
+    "description": "QWERTZ Core is an all-in-one event management plugin for Minecraft servers. It provides a comprehensive set of tools for hosts and administrators to manage events, player statuses, and game mechanics.",
+    "download": "https://modrinth.com/plugin/qwertz-core#download"
   },
   {
-    "name": "AutoTeams",
-    "banner": "https://cdn.discordapp.com/attachments/789/111/autoteams.png",
-    "description": "AutoTeams handles team assignment, balancing, region control, and live event management for Minecraft servers.",
-    "download": "https://example.com/autoteams"
+    "name": "Ducky Launcher",
+    "banner": "https://media.discordapp.net/attachments/1434119095321759808/1456560420083990623/content.png?ex=695ac959&is=695977d9&hm=86e44fda53b990f30c6201e32bc84a39812a6a5ca9d1c00ab16aa0e4d6ceb7d2&=&format=webp&quality=lossless&width=935&height=935",
+    "description": "COMING SOON | DuckyLauncher is your perfect all-in-one launcher for everything such as loading mods, loading different versions, from Fabric, and differnt mod loaders, and more, you can customize your game how you want it.",
+    "download": "https://discord.gg/zx6H34r2qR"
   }
 ]

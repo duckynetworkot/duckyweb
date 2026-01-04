@@ -1,14 +1,14 @@
 [
   {
-    "name": "Quack SMP",
-    "banner": "https://cdn.discordapp.com/attachments/123/456/banner.png",
-    "description": "Quack SMP is a competitive Minecraft server focused on events, custom plugins, and community-driven gameplay. We host weekly tournaments, seasonal content, and large-scale events.",
-    "discord": "https://discord.gg/example"
+    "name": "QWERTZ Network",
+    "banner": "https://cdn.discordapp.com/icons/971318756787777586/a_309f9c2e31efcd51266d15fadd356619.gif?animated=true&size=1024",
+    "description": "QWERTZ Network is a the place for events, plugins, minigames, and fun. It is currently a partner with Ducky, and Bee Events, and alot more servers!",
+    "discord": "https://discord.gg/AfGPqFwgTW"
   },
   {
-    "name": "DuckCraft",
-    "banner": "https://cdn.discordapp.com/attachments/789/111/duckcraft.png",
-    "description": "DuckCraft is a survival-based network featuring custom mechanics, RPG elements, and unique progression systems.",
-    "discord": "https://discord.gg/example2"
+    "name": "Bee Events",
+    "banner": "https://cdn.discordapp.com/icons/1409140892237037642/b259b63df143b5cf00613d2177ac1af4.webp?size=1024",
+    "description": "Bee Events is owned by Ducky, and is always welcome to new members, partners, and staff. Join today if you are interested in money, fun, and more events!",
+    "discord": "https://discord.gg/zx6H34r2qR"
   }
 ]
