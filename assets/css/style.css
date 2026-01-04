@@ -93,27 +93,13 @@ body{
   max-width:720px;
 }
 
-/* GRIDS */
+/* GRID */
 .grid{
   max-width:900px;
   margin:0 auto;
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:28px;
-  justify-items:center;
-}
-
-/* Responsive: 2 cards per row on desktop */
-@media (min-width: 700px) {
-  .grid {
-    grid-template-columns:repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 699px) {
-  .grid {
-    grid-template-columns:1fr;
-  }
 }
 
 /* CARDS */
@@ -128,9 +114,16 @@ body{
   width:100%;
 }
 
-.card:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(0,0,0,.65)}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 70px rgba(0,0,0,.65);
+}
 
-.card-banner{height:150px;background-size:cover;background-position:center}
+.card-banner{
+  height:150px;
+  background-size:cover;
+  background-position:center;
+}
 
 .card-body{
   padding:18px 18px 52px;
@@ -139,37 +132,33 @@ body{
   background:linear-gradient(to bottom,rgba(20,24,32,0),var(--glass) 25%);
 }
 
-.card-title{font-size:20px;font-weight:800;margin-bottom:8px}
+.card-title{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:8px;
+}
 
-/* SMOOTH BLUR DESCRIPTION */
+/* Smooth blur overlay on description (NO hover max-height changes) */
 .card-description{
   font-size:14px;
   line-height:1.6;
   max-height:72px;
   overflow:hidden;
   position:relative;
-  filter: blur(1px);
-  transition: max-height 0.4s ease, filter 0.4s ease;
-}
-
-.card:hover .card-description{
-  max-height:500px;
-  filter: blur(0);
 }
 
 .card-description::after{
   content:"";
   position:absolute;
-  bottom:0; left:0; width:100%; height:40px;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:40px;
   background:linear-gradient(to bottom, rgba(20,24,32,0), rgba(20,24,32,.95));
   backdrop-filter:blur(4px);
-  transition: opacity 0.3s ease;
 }
 
-.card:hover .card-description::after{
-  opacity:0;
-}
-
+/* CARD BUTTONS */
 .card-actions{
   position:absolute;
   bottom:12px;
@@ -186,9 +175,21 @@ body{
   text-decoration:none;
   cursor:pointer;
 }
-.btn.primary{background:linear-gradient(135deg,var(--yellow),var(--orange));color:#000}
-.btn.discord{background:var(--blurple);color:#fff}
-.btn.download{background:rgba(255,255,255,.15);color:#fff}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--yellow),var(--orange));
+  color:#000;
+}
+
+.btn.discord{
+  background:var(--blurple);
+  color:#fff;
+}
+
+.btn.download{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
 
 /* MODAL */
 .modal{
@@ -202,6 +203,7 @@ body{
   opacity:0;
   transition: opacity 0.35s ease;
 }
+
 .modal-content{
   max-width:650px;
   width:100%;
@@ -210,10 +212,34 @@ body{
   overflow:hidden;
   animation:pop .35s ease;
 }
-@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
-.modal-banner{height:180px;background-size:cover;background-position:center}
-.modal-body{padding:22px}
-.close{display:inline-block;margin-top:20px;font-weight:700;color:var(--yellow);cursor:pointer}
+
+@keyframes pop{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.modal-banner{
+  height:180px;
+  background-size:cover;
+  background-position:center;
+}
+
+.modal-body{
+  padding:22px;
+}
+
+.close{
+  display:inline-block;
+  margin-top:20px;
+  font-weight:700;
+  color:var(--yellow);
+  cursor:pointer;
+}
 
 /* FOOTER */
-footer{text-align:center;padding:40px 20px;opacity:.6;font-size:14px}
+footer{
+  text-align:center;
+  padding:40px 20px;
+  opacity:.6;
+  font-size:14px;
+}

@@ -20,10 +20,9 @@
   <a class="discord-btn" href="https://discord.gg/QtBNmgrQhD" target="_blank">Discord</a>
 </div>
 
-<section class="hero" style="min-height:auto;padding-top:160px">
-  <h1 class="gradient">Projects</h1>
-  <p class="subtitle">Public & private development work</p>
-
+<section class="hero">
+  <h1>Projects</h1>
+  <p>Public & private development work</p>
   <div class="grid" id="projectGrid"></div>
 </section>
 
@@ -60,20 +59,24 @@ fetch('projects.json')
           </div>
         </div>
       `;
-
       grid.appendChild(card);
     });
   });
 
 function openModal(p) {
-  document.getElementById('modal').style.display = 'flex';
+  const modal = document.getElementById('modal');
   document.getElementById('modalTitle').innerText = p.name;
   document.getElementById('modalDescription').innerText = p.description;
   document.getElementById('modalBanner').style.backgroundImage = `url('${p.banner}')`;
+
+  modal.style.display = 'flex';
+  setTimeout(() => modal.style.opacity = 1, 10);
 }
 
 function closeModal() {
-  document.getElementById('modal').style.display = 'none';
+  const modal = document.getElementById('modal');
+  modal.style.opacity = 0;
+  setTimeout(() => modal.style.display = 'none', 350);
 }
 </script>
 

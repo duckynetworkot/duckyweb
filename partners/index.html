@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Projects</title>
+  <title>Partners</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -21,9 +21,9 @@
 </div>
 
 <section class="hero">
-  <h1>Projects</h1>
-  <p>Public & private development work</p>
-  <div class="grid" id="projectGrid"></div>
+  <h1>Partner Servers</h1>
+  <p>Servers I work with & recommend</p>
+  <div class="grid" id="partnerGrid"></div>
 </section>
 
 <!-- MODAL -->
@@ -39,10 +39,10 @@
 </div>
 
 <script>
-fetch('projects.json')
+fetch('partners.json')
   .then(res => res.json())
   .then(data => {
-    const grid = document.getElementById('projectGrid');
+    const grid = document.getElementById('partnerGrid');
 
     data.forEach(p => {
       const card = document.createElement('div');
@@ -55,7 +55,7 @@ fetch('projects.json')
           <div class="card-description">${p.description}</div>
           <div class="card-actions">
             <div class="btn primary" onclick='openModal(${JSON.stringify(p)})'>View Info</div>
-            <a class="btn download" href="${p.download}" target="_blank">Download</a>
+            <a class="btn discord" href="${p.discord}" target="_blank">Discord</a>
           </div>
         </div>
       `;
