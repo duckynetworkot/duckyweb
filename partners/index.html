@@ -20,9 +20,11 @@
   <a class="discord-btn" href="https://discord.gg/QtBNmgrQhD" target="_blank">Discord</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Partner Servers</h1>
   <p>Servers I work with & recommend</p>
+
   <div class="grid" id="partnerGrid"></div>
 </section>
 
@@ -43,11 +45,9 @@ fetch('partners.json')
   .then(res => res.json())
   .then(data => {
     const grid = document.getElementById('partnerGrid');
-
     data.forEach(p => {
       const card = document.createElement('div');
       card.className = 'card';
-
       card.innerHTML = `
         <div class="card-banner" style="background-image:url('${p.banner}')"></div>
         <div class="card-body">
@@ -68,7 +68,6 @@ function openModal(p) {
   document.getElementById('modalTitle').innerText = p.name;
   document.getElementById('modalDescription').innerText = p.description;
   document.getElementById('modalBanner').style.backgroundImage = `url('${p.banner}')`;
-
   modal.style.display = 'flex';
   setTimeout(() => modal.style.opacity = 1, 10);
 }
